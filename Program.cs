@@ -1,0 +1,2 @@
+﻿//Spencer Solt, 11/5/25, Lab 9 - Maze #2
+Console.WriteLine("The goal is to move around using the arrow keys to get to the end of the maze '#' after collecting 10 coins '^' to open the gate '|' and avoiding the bad guys '%'. There are gems '$' for bonus points.");
