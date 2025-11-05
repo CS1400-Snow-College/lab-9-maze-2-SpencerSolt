@@ -1,0 +1,15 @@
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\bin\Debug\net8.0\lab-9-maze-2-SpencerSolt.exe
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\bin\Debug\net8.0\lab-9-maze-2-SpencerSolt.deps.json
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\bin\Debug\net8.0\lab-9-maze-2-SpencerSolt.runtimeconfig.json
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\bin\Debug\net8.0\lab-9-maze-2-SpencerSolt.dll
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\bin\Debug\net8.0\lab-9-maze-2-SpencerSolt.pdb
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\lab-9-maze-2-SpencerSolt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\lab-9-maze-2-SpencerSolt.AssemblyInfoInputs.cache
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\lab-9-maze-2-SpencerSolt.AssemblyInfo.cs
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\lab-9-maze-2-SpencerSolt.csproj.CoreCompileInputs.cache
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\lab-9-maze-2-SpencerSolt.sourcelink.json
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\lab-9-maze-2-SpencerSolt.dll
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\refint\lab-9-maze-2-SpencerSolt.dll
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\lab-9-maze-2-SpencerSolt.pdb
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\lab-9-maze-2-SpencerSolt.genruntimeconfig.cache
+C:\Users\spenc\Desktop\Labs\lab-9-maze-2-SpencerSolt\obj\Debug\net8.0\ref\lab-9-maze-2-SpencerSolt.dll
