@@ -14,16 +14,16 @@ for (int i = 0; i < mapRows.Count(); i++)
     Console.WriteLine(mapRows[i]);
 
 //Movement control method, the parameter stops the user from typing text
-ConsoleKey TryMove(ConsoleKey button)
+ConsoleKey TryMove(ConsoleKey button, int mazeHeight, int mazeLength)
 {
     //Compares the user input to move the cursor in the correct direction
-    if (button is ConsoleKey.DownArrow)
+    if (button is ConsoleKey.DownArrow && Console.CursorTop < Console.BufferHeight && Console.CursorTop < mazeHeight)
         Console.CursorTop++;
-    else if (button is ConsoleKey.UpArrow)
+    else if (button is ConsoleKey.UpArrow && Console.CursorTop > 0)
         Console.CursorTop--;
-    else if (button is ConsoleKey.LeftArrow)
+    else if (button is ConsoleKey.LeftArrow && Console.CursorLeft > 0)
         Console.CursorLeft--;
-    else if (button is ConsoleKey.RightArrow)
+    else if (button is ConsoleKey.RightArrow && Console.CursorLeft < Console.BufferWidth && Console.CursorLeft < mazeLength)
         Console.CursorLeft++;
     //Returns the user input so the 'do-while' loop can check it
     return button;
@@ -35,9 +35,13 @@ Console.SetCursorPosition(0, 0);
 //Enumerable so the while loop can check the user input for ConsoleKey.Escape
 ConsoleKey key;
 
+//Variables for maze height and width
+int mazeBottom = mapRows.Count() - 1;
+int mazeRight = mapRows[Console.CursorTop].Length - 1;
+
 //Loop to keep the program running until the escape key is pressed
 do
 {
-    key = TryMove(Console.ReadKey(true).Key);
+    key = TryMove(Console.ReadKey(true).Key, mazeBottom, mazeRight);
 }
 while (key != ConsoleKey.Escape);
