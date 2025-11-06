@@ -42,6 +42,9 @@ int mazeRight = mapRows[Console.CursorTop].Length - 1;
 //Variable for the lose to exit the loop
 bool lose = false;
 
+//Variable for the score
+int score = 0;
+
 //Variables to detect what direction the bad guys should be moving (False:Left  True:Right)
 /*bool badGuyTopDirection = true;
 bool badGuyBottomDirection = false;
@@ -87,6 +90,11 @@ do
             badGuyBottomDirection = true;
     }
 */
+    //Score for collecting coins
+    if (mapRows[Console.CursorTop].Substring(Console.CursorLeft, 1).Contains("^"))
+    {
+        score = score + 100;
+    }
     //Changinges the lose condition to true when the current cell contains '%' and gets the time to complete the maze
     if (mapRows[Console.CursorTop].Substring(Console.CursorLeft, 1).Contains("%"))
     {
@@ -99,3 +107,5 @@ while (key != ConsoleKey.Escape || lose == true);
 Console.Clear();
 if (lose == true)
     Console.WriteLine("You Lose");
+
+Console.WriteLine($"Your Score: {score}");
