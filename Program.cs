@@ -90,12 +90,28 @@ do
             badGuyBottomDirection = true;
     }
 */
+
     //Score for collecting coins
     if (mapRows[Console.CursorTop].Substring(Console.CursorLeft, 1).Contains("^"))
     {
+        //Add a way to remove the coins
         score = score + 100;
     }
-    //Changinges the lose condition to true when the current cell contains '%' and gets the time to complete the maze
+
+    //Score for collecting gems
+    else if (mapRows[Console.CursorTop].Substring(Console.CursorLeft, 1).Contains("$"))
+    {
+        //Add a way to remove the gems
+        score = score + 200;
+    }
+
+    //Removes the gate if score reaches 1000
+    if (score >= 1000)
+    {
+        //Add a way to delete the gate
+    }
+    
+    //Changes the lose condition to true when the current cell contains '%' and gets the time to complete the maze
     if (mapRows[Console.CursorTop].Substring(Console.CursorLeft, 1).Contains("%"))
     {
         lose = true;
