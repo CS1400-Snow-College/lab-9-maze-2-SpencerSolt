@@ -17,17 +17,31 @@ for (int i = 0; i < mapRows.Count(); i++)
     Console.WriteLine(mapRows[i]);
 
 //Movement control method, the parameter stops the user from typing text
-ConsoleKey TryMove(ConsoleKey button, int mazeHeight, int mazeLength)
+ConsoleKey TryMove(ConsoleKey button, int mazeHeight, int mazeLength, string[] mazeRows, int points)
 {
     //Compares the user input to move the cursor in the correct direction
-    if (button is ConsoleKey.DownArrow && Console.CursorTop < Console.BufferHeight && Console.CursorTop < mazeHeight)
-        Console.CursorTop++;
-    else if (button is ConsoleKey.UpArrow && Console.CursorTop > 0)
-        Console.CursorTop--;
-    else if (button is ConsoleKey.LeftArrow && Console.CursorLeft > 0)
-        Console.CursorLeft--;
-    else if (button is ConsoleKey.RightArrow && Console.CursorLeft < Console.BufferWidth && Console.CursorLeft < mazeLength)
-        Console.CursorLeft++;
+    if (points < 1000)
+    {
+        if (button is ConsoleKey.DownArrow && Console.CursorTop < Console.BufferHeight && Console.CursorTop < mazeHeight && !mazeRows[Console.CursorTop + 1].Substring(Console.CursorLeft, 1).Contains('*') &&  !mazeRows[Console.CursorTop + 1].Substring(Console.CursorLeft, 1).Contains('|'))
+            Console.CursorTop++;
+        else if (button is ConsoleKey.UpArrow && Console.CursorTop > 0 && !mazeRows[Console.CursorTop - 1].Substring(Console.CursorLeft, 1).Contains('*') && !mazeRows[Console.CursorTop - 1].Substring(Console.CursorLeft, 1).Contains('|'))
+            Console.CursorTop--;
+        else if (button is ConsoleKey.LeftArrow && Console.CursorLeft > 0 && !mazeRows[Console.CursorTop].Substring(Console.CursorLeft - 1, 1).Contains('*') && !mazeRows[Console.CursorTop].Substring(Console.CursorLeft - 1, 1).Contains('|'))
+            Console.CursorLeft--;
+        else if (button is ConsoleKey.RightArrow && Console.CursorLeft < Console.BufferWidth && Console.CursorLeft < mazeLength && !mazeRows[Console.CursorTop].Substring(Console.CursorLeft + 1, 1).Contains('*') && !mazeRows[Console.CursorTop].Substring(Console.CursorLeft + 1, 1).Contains('|'))
+            Console.CursorLeft++;
+    }
+    else
+    {
+        if (button is ConsoleKey.DownArrow && Console.CursorTop < Console.BufferHeight && Console.CursorTop < mazeHeight && !mazeRows[Console.CursorTop + 1].Substring(Console.CursorLeft, 1).Contains('*'))
+            Console.CursorTop++;
+        else if (button is ConsoleKey.UpArrow && Console.CursorTop > 0 && !mazeRows[Console.CursorTop - 1].Substring(Console.CursorLeft, 1).Contains('*'))
+            Console.CursorTop--;
+        else if (button is ConsoleKey.LeftArrow && Console.CursorLeft > 0 && !mazeRows[Console.CursorTop].Substring(Console.CursorLeft - 1, 1).Contains('*'))
+            Console.CursorLeft--;
+        else if (button is ConsoleKey.RightArrow && Console.CursorLeft < Console.BufferWidth && Console.CursorLeft < mazeLength && !mazeRows[Console.CursorTop].Substring(Console.CursorLeft + 1, 1).Contains('*'))
+            Console.CursorLeft++;
+    }
     //Returns the user input so the 'do-while' loop can check it
     return button;
 }
@@ -129,7 +143,7 @@ do
         lose = true;
         break;
     }
-    key = TryMove(Console.ReadKey(true).Key, mazeBottom, mazeRight);
+    key = TryMove(Console.ReadKey(true).Key, mazeBottom, mazeRight, mapRows, score);
 }
 while (key != ConsoleKey.Escape || lose == true || win == true);
 Console.Clear();
