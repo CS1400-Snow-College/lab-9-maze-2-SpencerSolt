@@ -1,4 +1,5 @@
 ﻿//Spencer Solt, 11/5/25, Lab 9 - Maze #2
+using System.Diagnostics;
 Console.WriteLine("The goal is to move around using the arrow keys to get to the end of the maze '#' after collecting 10 coins '^' to open the gate '|' and avoiding the bad guys '%'. There are gems '$' for bonus points.");
 
 //Loads the contents of the file to be saved on a variable to be printed
@@ -7,6 +8,8 @@ string[] mapRows = File.ReadAllLines("C:/Users/spenc/Desktop/Labs/lab-9-maze-2-S
 //Keeps the description of the program and doesn't start the stopwatch until the user is done reading
 Console.Write("Press any key to continue ");
 Console.ReadKey(true);
+long time = Stopwatch.GetTimestamp();
+TimeSpan timeSpan = Stopwatch.GetElapsedTime(time);
 
 //Clears the screen then displays the maze
 Console.Clear();
@@ -39,8 +42,9 @@ ConsoleKey key;
 int mazeBottom = mapRows.Count() - 1;
 int mazeRight = mapRows[Console.CursorTop].Length - 1;
 
-//Variable for the lose to exit the loop
+//Variable for the lose and win to exit the loop
 bool lose = false;
+bool win = false;
 
 //Variable for the score
 int score = 0;
@@ -110,8 +114,16 @@ do
     {
         //Add a way to delete the gate
     }
+
+    //Changes the win condition to true when the current cell contains '#'
+    if (mapRows[Console.CursorTop].Substring(Console.CursorLeft, 1).Contains("#"))
+    {
+        timeSpan = Stopwatch.GetElapsedTime(time);
+        win = true;
+        break;
+    }
     
-    //Changes the lose condition to true when the current cell contains '%' and gets the time to complete the maze
+    //Changes the lose condition to true when the current cell contains '%'
     if (mapRows[Console.CursorTop].Substring(Console.CursorLeft, 1).Contains("%"))
     {
         lose = true;
@@ -119,9 +131,13 @@ do
     }
     key = TryMove(Console.ReadKey(true).Key, mazeBottom, mazeRight);
 }
-while (key != ConsoleKey.Escape || lose == true);
+while (key != ConsoleKey.Escape || lose == true || win == true);
 Console.Clear();
 if (lose == true)
     Console.WriteLine("You Lose");
-
+if (win == true)
+{
+    Console.WriteLine("Congratulations on completing the maze!");
+    Console.WriteLine($"Completion time: {timeSpan}");
+}
 Console.WriteLine($"Your Score: {score}");
