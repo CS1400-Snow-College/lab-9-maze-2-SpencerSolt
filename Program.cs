@@ -39,9 +39,63 @@ ConsoleKey key;
 int mazeBottom = mapRows.Count() - 1;
 int mazeRight = mapRows[Console.CursorTop].Length - 1;
 
+//Variable for the lose to exit the loop
+bool lose = false;
+
+//Variables to detect what direction the bad guys should be moving (False:Left  True:Right)
+/*bool badGuyTopDirection = true;
+bool badGuyBottomDirection = false;
+int badGuyTopSpot = 14;
+int badGuyBottomSpot = 37;
+string badGuyTop;
+string badGuyBottom;*/
+
 //Loop to keep the program running until the escape key is pressed
 do
 {
+    //Decides what direction/position the badguys go 
+    /*if (badGuyTopDirection == true)
+    {
+        badGuyTopSpot++;
+        badGuyTop = mapRows[5].Substring(badGuyTopSpot, badGuyTopSpot) + "%" + mapRows[5].Substring(badGuyTopSpot + 1, badGuyTopSpot - 1);
+        mapRows[5] = badGuyTop;
+        if (badGuyTopSpot == 42)
+            badGuyTopDirection = false;
+    }
+    else
+    {
+        badGuyTopSpot--;
+        badGuyTop = mapRows[5].Substring(badGuyTopSpot - 1, badGuyTopSpot - 1) + "%" + mapRows[5].Substring(badGuyTopSpot, badGuyTopSpot);
+        mapRows[5] = badGuyTop;
+        if (badGuyTopSpot == 10)
+            badGuyTopDirection = true;
+    }
+    if (badGuyBottomDirection == true)
+    {
+        badGuyBottomSpot++;
+        badGuyBottom = mapRows[15].Substring(badGuyBottomSpot, badGuyBottomSpot) + "%" + mapRows[15].Substring(badGuyBottomSpot + 1, badGuyBottomSpot-1);
+        mapRows[15] = badGuyBottom;
+        if (badGuyBottomSpot == 42)
+            badGuyBottomDirection = false;
+    }
+    else
+    {
+        badGuyBottomSpot--;
+        badGuyBottom = mapRows[15].Substring(badGuyBottomSpot - 1, badGuyBottomSpot - 1) + "%" + mapRows[15].Substring(badGuyBottomSpot, badGuyBottomSpot);
+        mapRows[15] = badGuyBottom;
+        if (badGuyBottomSpot == 10)
+            badGuyBottomDirection = true;
+    }
+*/
+    //Changinges the lose condition to true when the current cell contains '%' and gets the time to complete the maze
+    if (mapRows[Console.CursorTop].Substring(Console.CursorLeft, 1).Contains("%"))
+    {
+        lose = true;
+        break;
+    }
     key = TryMove(Console.ReadKey(true).Key, mazeBottom, mazeRight);
 }
-while (key != ConsoleKey.Escape);
+while (key != ConsoleKey.Escape || lose == true);
+Console.Clear();
+if (lose == true)
+    Console.WriteLine("You Lose");
